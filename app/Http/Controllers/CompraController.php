@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Compra;
+use App\Models\Venta;
 use Illuminate\Http\Request;
 
 class CompraController extends Controller
@@ -12,7 +13,7 @@ class CompraController extends Controller
      */
     public function index()
     {
-        //
+        return Compra::all();
     }
 
     /**
@@ -28,7 +29,12 @@ class CompraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $compra = new Compra();
+        $compra->producto_id = $request->producto_id;
+        $compra->proveedor_id = $request->proveedor_id;
+        $compra->cantidad = $request->cantidad;
+        $compra->save();
+        return "se creo una nueva compra";
     }
 
     /**

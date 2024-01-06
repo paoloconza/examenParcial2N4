@@ -12,7 +12,7 @@ class VentaController extends Controller
      */
     public function index()
     {
-        //
+        return Venta::all();
     }
 
     /**
@@ -28,7 +28,12 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $venta = new Venta();
+        $venta->producto_id = $request->producto_id;
+        $venta->empleado_id = $request->empleado_id;
+        $venta->cantidad = $request->cantidad;
+        $venta->save();
+        return "se creo una nueva venta";
     }
 
     /**
